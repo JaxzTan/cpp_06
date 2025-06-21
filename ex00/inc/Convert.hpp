@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Convert.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chtan <chtan@student.42kl.edu.my>          +#+  +:+       +#+        */
+/*   By: chtan <chtan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 10:48:38 by chtan             #+#    #+#             */
-/*   Updated: 2025/06/18 13:32:53 by chtan            ###   ########.fr       */
+/*   Updated: 2025/06/21 15:43:20 by chtan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ class Convert{
         static  void    p_all(std::string input);
         static  type    classify(std::string str);
         static  void    print(const std::string c, const std::string num, const std::string f, const std::string d);
+
         class InvalidInputException : public std::exception {
             public:
                 virtual const char* what() const throw();

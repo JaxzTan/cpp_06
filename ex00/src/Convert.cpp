@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   Convert.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaxztan <jaxztan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: chtan <chtan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 10:48:36 by chtan             #+#    #+#             */
-/*   Updated: 2025/06/18 13:51:56 by jaxztan          ###   ########.fr       */
+/*   Updated: 2025/06/21 15:32:31 by chtan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/Convert.hpp"
 
+// constructor
 Convert::Convert() 
 {}
 
@@ -25,14 +26,17 @@ Convert &Convert::operator=(const Convert &other) {
     return *this;
 }
 
+// exception
 const char *Convert::InvalidInputException::what() const throw()
 {
     return ("Invalid input for conversion.");
 }
 
+//destructor
 Convert::~Convert()
 {}
 
+// check is the char is printable
 bool Convert::p_printable(std::string input) {
     int i = 0;
     while (input[i])
@@ -87,13 +91,12 @@ type Convert::classify(std::string str)
 		return (INT);
 }
 
-double input = 0.0;
-
 static bool is_ascii(char c) {
     return (c >= 0 && c <= 127);
 }
 
 void Convert::p_all(std::string str) {
+	double input = 0.0;
     if (str.empty())
     {
         throw InvalidInputException();
@@ -160,4 +163,3 @@ void Convert::p_all(std::string str) {
 		}
 	}
 }
-
