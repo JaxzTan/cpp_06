@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Convert.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chtan <chtan@student.42kl.edu.my>          +#+  +:+       +#+        */
+/*   By: jaxztan <jaxztan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 10:48:38 by chtan             #+#    #+#             */
-/*   Updated: 2025/06/18 13:32:53 by chtan            ###   ########.fr       */
+/*   Updated: 2025/06/25 10:18:04 by jaxztan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,17 @@
 # include <string>
 # include <limits>
 
-// Integer limits
-#define INT_MIN_VALUE       (-2147483648)       // -2147483648
-#define INT_MAX_VALUE       2147483647          // 2147483647
-// Float limits
-#define FLOAT_MIN_VALUE     1.17549e-38f         // smallest positive normalized float
-#define FLOAT_MAX_VALUE     3.40282e+38f         // largest positive float
-#define FLOAT_LOWEST_VALUE  (-3.40282e+38f)      // most negative float
-// Double limits
-#define DOUBLE_MIN_VALUE     2.22507e-308        // smallest positive normalized double
-#define DOUBLE_MAX_VALUE     1.79769e+308        // largest positive double
-#define DOUBLE_LOWEST_VALUE  (-1.79769e+308)     // most negative double
+// // Integer limits
+// #define INT_MIN_VALUE       (-2147483648)       // -2147483648
+// #define INT_MAX_VALUE       2147483647          // 2147483647
+// // Float limits
+// #define FLOAT_MIN_VALUE     1.17549e-38f         // smallest positive normalized float
+// #define FLOAT_MAX_VALUE     3.40282e+38f         // largest positive float
+// #define FLOAT_LOWEST_VALUE  (-3.40282e+38f)      // most negative float
+// // Double limits
+// #define DOUBLE_MIN_VALUE     2.22507e-308        // smallest positive normalized double
+// #define DOUBLE_MAX_VALUE     1.79769e+308        // largest positive double
+// #define DOUBLE_LOWEST_VALUE  (-1.79769e+308)     // most negative double
 
 enum type {
     CHAR,     // Represents a character type (e.g., 'a', 'Z')
@@ -49,9 +49,10 @@ class Convert{
         Convert &operator=(const Convert &other);
         ~Convert();
 
-        static  bool    p_printable(std::string input);
-        static  void    p_all(std::string input);
-        static  type    classify(std::string str);
+        static  bool    check_printable(std::string input);
+        static  void    convert_main(std::string input);
+        static  type    classify_type(std::string str);
+        static  bool    is_ascii(char c);
         static  void    print(const std::string c, const std::string num, const std::string f, const std::string d);
         class InvalidInputException : public std::exception {
             public:

@@ -6,7 +6,7 @@
 /*   By: jaxztan <jaxztan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 10:48:36 by chtan             #+#    #+#             */
-/*   Updated: 2025/06/18 13:51:56 by jaxztan          ###   ########.fr       */
+/*   Updated: 2025/06/25 11:44:14 by jaxztan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,19 +33,35 @@ const char *Convert::InvalidInputException::what() const throw()
 Convert::~Convert()
 {}
 
-bool Convert::p_printable(std::string input) {
+bool Convert::check_printable(std::string input)
+{
     int i = 0;
+
     while (input[i])
     {
         if (input[i] < 32 || input[i] > 126) 
         {
             return false;
         }
+		i++;
     }
     return true;
 }
 
-type Convert::classify(std::string str)
+void Convert::print(const std::string c, const std::string num, const std::string f, const std::string d)
+{
+	std::cout << "char: " << c << std::endl;
+	std::cout << "int: " << num << std::endl;
+	std::cout << "float: " << f << std::endl;
+	std::cout << "double: " << d << std::endl;
+}
+
+bool Convert::is_ascii(char c)
+{
+	return (c >= 0 && c <= 127);
+}
+
+type Convert::classify_type(std::string str)
 {
 	int n = 0;
 	unsigned int count_dot= 0;
@@ -87,20 +103,14 @@ type Convert::classify(std::string str)
 		return (INT);
 }
 
-double input = 0.0;
-
-static bool is_ascii(char c) {
-    return (c >= 0 && c <= 127);
-}
-
-void Convert::p_all(std::string str) {
-    if (str.empty())
+void Convert::convert_main(std::string str)
+{
+	double input = 0.0;
+    if (!Convert::check_printable(str))
     {
         throw InvalidInputException();
     }
-    // if (!p_printable(str))
-    //     std::cerr << "Error: arguments must be printable characters." << std::endl;
-    type t = classify(str);
+    type t = classify_type(str);
     if (t == INT || t == DOUBLE || t == FLOAT)
 		input = std::atof(str.c_str());
 	else if (t == CHAR)
@@ -144,7 +154,6 @@ void Convert::p_all(std::string str) {
 		if (input >= std::numeric_limits<int>::min() && input <= std::numeric_limits<int>::max())
 		{
 			std::cout << "int: " << static_cast<int>(input) << std::endl;
-			// std::cout << std::fixed << std::setprecision(1);
 			if (input >= -std::numeric_limits<float>::max() && input <= std::numeric_limits<float>::max())
 				std::cout << std::fixed << std::setprecision(1)  << "float: " << static_cast<float>(input) << "f" << std::endl;
 			else
@@ -154,10 +163,9 @@ void Convert::p_all(std::string str) {
 		else
 		{
 			std::cout << "char: " << "Impossible" << std::endl;
-			// std::cout << std::fixed << std::setprecision(1) << std::endl;
+			std::cout << "int: " << "Impossible" << std::endl;
 			std::cout   << "float: " << static_cast<float>(input) << "f" << std::endl;
 			std::cout  << "double: " << static_cast<double>(input) << std::endl;
 		}
 	}
 }
-
