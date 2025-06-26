@@ -6,7 +6,7 @@
 /*   By: jaxztan <jaxztan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 10:48:36 by chtan             #+#    #+#             */
-/*   Updated: 2025/06/25 11:44:14 by jaxztan          ###   ########.fr       */
+/*   Updated: 2025/06/26 17:41:21 by jaxztan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,12 +160,12 @@ void Convert::convert_main(std::string str)
 				std::cout << "float: " << static_cast<float>(input) << "f" << std::endl;
 			std::cout  << std::fixed << std::setprecision(1) << "double: " << static_cast<double>(input) << std::endl;
 		}
-		else
-		{
-			std::cout << "char: " << "Impossible" << std::endl;
-			std::cout << "int: " << "Impossible" << std::endl;
-			std::cout   << "float: " << static_cast<float>(input) << "f" << std::endl;
-			std::cout  << "double: " << static_cast<double>(input) << std::endl;
-		}
+		// else
+		// {
+		// 	std::cout << "char: " << "Impossible" << std::endl;
+		// 	std::cout << "int: " << "Impossible" << std::endl;
+		// 	std::cout   << "float: " << static_cast<float>(input) << "f" << std::endl;
+		// 	std::cout  << "double: " << static_cast<double>(input) << std::endl;
+		// }
 	}
 }
